@@ -1,0 +1,85 @@
+Задание №1:
+
+Class Main:
+package task1;
+
+import java.util.Random;
+
+
+public class Main {
+    private static final int ARRAY_SIZE = 8;
+
+    public static void main(String[] args) {
+        int[] randomArray = generateRandomArray();
+
+        System.out.println("Случайная строка: ");
+        for (int num : randomArray) {
+            System.out.println(num);
+        }
+
+        int[] replacedArray = replaceElementsOnZero(randomArray);
+
+        System.out.println("Массив с заменой элементов с нечетным индексом на ноль: ");
+        for (int num : replacedArray) {
+            System.out.println(num);
+        }
+    }
+
+    private static int[] generateRandomArray() {
+        Random random = new Random();
+        int[] randomNum = new int[ARRAY_SIZE];
+        for (int i = 0; i < ARRAY_SIZE; i++) {
+            randomNum[i] = random.nextInt(50) + 1;
+        }
+        return randomNum;
+    }
+
+    private static int[] replaceElementsOnZero(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                arr[i] = 0;
+            }
+        }
+        return arr;
+    }
+}
+
+
+
+_____________________________________________________________________________
+Задание №2:
+
+package task2;
+
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] randomArray = generateRandomArray(5);
+
+        System.out.println("Случайнвя строка: ");
+        for(int num : randomArray){
+            System.out.println(num);
+        }
+
+        System.out.println("Массив строго возрастает? - " + checkIncreasing(randomArray));
+    }
+    private static int[] generateRandomArray(int size){
+        Random random = new Random();
+        int[] randomNum = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            randomNum[i] = random.nextInt(99) + 10;
+        }
+        return randomNum;
+    }
+
+    private static boolean checkIncreasing(int[] arr){
+        for (int i = 0; i < arr.length; i++){
+            if(arr[i+1] < arr[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
